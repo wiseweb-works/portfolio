@@ -14,6 +14,10 @@ const navLinks = [
     name: 'blog',
     href: '/blog',
   },
+  {
+    name: 'privacy',
+    href: '/privacy',
+  },
 ];
 
 export default function Header() {

@@ -2,6 +2,7 @@ import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
 import { JSX } from 'react';
 import { highlight } from 'sugar-high';
 import Counter from './Counter';
+import Image from 'next/image';
 
 function Code({
   children,
@@ -14,6 +15,22 @@ function Code({
 const components = {
   code: Code,
   Counter,
+  img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    const { src, alt, width, height, ...rest } = props;
+
+    if (!src) return null;
+
+    return (
+      <Image
+        src={src}
+        alt={alt || 'Image'}
+        width={Number(width) || 600}
+        height={Number(height) || 400}
+        style={{ width: '100%', height: 'auto' }}
+        {...rest}
+      />
+    );
+  },
 };
 
 export default function MDXContent(

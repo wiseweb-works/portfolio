@@ -14,8 +14,8 @@ const calistoga = Calistoga({
 });
 
 export const metadata: Metadata = {
-  title: 'Ted Thoughts',
-  description: 'My personal site to showcase my developer work and opinions.',
+  title: 'Abdullah Koyuncu',
+  description: 'My Personal Portfolio',
 };
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
         className={cn(
           'mx-auto flex min-h-screen max-w-3xl flex-col px-8 font-sans antialiased',
           inter.variable,
-          calistoga.variable,
+          calistoga.variable
         )}
       >
         <Providers>

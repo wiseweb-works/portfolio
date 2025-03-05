@@ -1,73 +1,81 @@
 import Link from 'next/link';
 
-const lastUpdated = 'Sep 2024';
+const lastUpdated = 'Feb 2025';
 
 export default function page() {
   return (
     <article className="prose mt-8 pb-16 dark:prose-invert">
       <div className="space-y-4">
-        <h1 className="title text-5xl">privacy policy.</h1>
-        <p>Last Updated: {lastUpdated}</p>
+        <h1 className="title text-5xl">privacy policy</h1>
+        <p className="text-justify">Last Updated: {lastUpdated}</p>
       </div>
       <div className="space-y-4">
-        <h2 className="title text-3xl">Hey, Welcome!</h2>
-        <p>
-          Thanks for stopping by! This <b>Privacy Policy</b> is just here to let
-          you know how things work around here. My website is mainly about
-          showcasing my work, and I&apos;m all about respecting your privacy.
+        <h2 className="title text-3xl">Welcome to Privacy Policy</h2>
+        <p className="text-justify">
+          This <b>Privacy Policy</b> is here to let you know how things work
+          around here. I respect your privacy and don&apos;t collect or store
+          any personal information without your consent.
         </p>
-        <h2 className="title">What Information I Collect (Hint: Not Much)</h2>
-        <p>
-          Honestly, this is just a static portfolio site, so I don&apos;t
-          actively collect any personal information. There&apos;s no account
-          creation, no tracking cookies, and definitely no sneaky data
-          gathering.
+        <h2 className="title">Data Collection and Use</h2>
+        <p className="text-justify">
+          I do not collect personal information without your explicit consent.
+          The only automatically collected data is your IP address, which I use
+          to improve the functionality and security of my website. Your IP
+          address is temporarily stored for a maximum of 14 days and then
+          automatically deleted. I do not collect any other personal information
+          (such as names, email addresses, or other details) unless you
+          voluntarily provide this information (e.g., via contact forms,
+          registrations, or others).
         </p>
-        <h3>1. Chatbot Conversations</h3>
-        <p>
-          If you send a message through the chatbot, it might be stored for
-          caching and training purposes. So please avoid sharing any
-          confidential info in the chat.
+        <h3>Cookies and LocalStorage</h3>
+        <p className="text-justify">
+          My site may use local storage to improve your experience (especially
+          Theme). This data is temporarily stored on your device and can be
+          disabled through your browser settings. However, disabling this may
+          affect the functionality of certain features on my site.
         </p>
-        <h3>2. Contact Info</h3>
-        <p>
-          If you reach out via email or the contact form, the info you provide
-          is entirely up to you. I&apos;ll only use it to reply and have a
-          conversation with you—no funny business.
+        <h3>Data Retention</h3>
+        <p className="text-justify">
+          I do not store any personal data unless it is necessary to fulfill a
+          specific function. The only exception is IP addresses, which are
+          temporarily stored for up to 14 days for security and operational
+          purposes. After 14 days, your IP address is automatically deleted.
         </p>
-        <h2 className="title">How I Use the Info</h2>
-        <p>Here&apos;s what I might do with any information I collect:</p>
+        <h2 className="title">Data Sharing</h2>
+        <p className="text-justify">
+          I do not share your personal data with third parties, and I do not
+          sell your data to any third parties. I only use trusted third-party
+          services for purposes like website performance and security, which are
+          subject to strict data protection agreements.
+        </p>
+        <h2 className="title">Your Rights</h2>
+        <p className="text-justify">As a user, you have the right to:</p>
         <ul>
-          <li>Make sure the site is running smoothly</li>
-          <li>Improve the website based on feedback you might share</li>
-          <li>Respond to your questions or feedback</li>
+          <li>Request access to your personal data.</li>
+          <li>Request the deletion or correction of any data I hold.</li>
+          <li>Object to the processing of your personal data.</li>
+          <li>Request the portability of your personal data.</li>
         </ul>
-        <h2 className="title">Sharing Your Info (Spoiler: I Don&apos;t)</h2>
-        <p>
-          I don&apos;t sell, trade, or rent your personal info. If you shared
-          something sensitive by accident, feel free to reach out, and I&apos;ll
-          help you remove it.
+        <h2 className="title">Data Security</h2>
+        <p className="text-justify">
+          I implement appropriate security measures to protect the personal data
+          I hold, including encryption and secure storage. However, please note
+          that no method of data transmission over the internet is completely
+          secure, and I cannot guarantee absolute security.
         </p>
-        <h2 className="title">Security (The Internet Isn&apos;t Perfect)</h2>
-        <p>
-          I&apos;ll do my best to keep any info you share safe, but let&apos;s
-          be real—no system is foolproof. While I&apos;ll take reasonable steps
-          to protect your info, I can&apos;t promise 100% security.
+        <h2 className="title">Contact Me</h2>
+        <p className="text-justify">
+          If you have any questions or concerns about my Privacy Policy or data
+          processing practices, please contact me at{' '}
+          <Link href="mailto:abdullahkoyuncu@web.de">
+            abdullahkoyuncu@web.de
+          </Link>
         </p>
-        <h2 className="title">Policy Updates (No Surprises)</h2>
-        <p>
-          This policy is current as of <b>{lastUpdated}</b>. If I make any
-          changes, I&apos;ll update it here, so you&apos;re always in the loop.
-          Feel free to check back occasionally, but don&apos;t worry—I&apos;m
-          not making any big changes without letting you know.
-        </p>
-        <h2 className="title">Got Questions?</h2>
-        <p>
-          If you have any questions, concerns, or just want to say hi, drop me
-          an email at{' '}
-          <Link href="mailto:hello@tedawf.com">hello@tedawf.com</Link> or use
-          the <Link href="/contact">contact form</Link>. I&apos;d love to hear
-          from you!
+        <h2 className="title">Changes to This Privacy Policy</h2>
+        <p className="text-justify">
+          I may update this Privacy Policy from time to time. Any changes will
+          be posted on this page, and I encourage you to review the policy
+          periodically.
         </p>
       </div>
     </article>

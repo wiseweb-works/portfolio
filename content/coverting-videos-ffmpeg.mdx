@@ -1,0 +1,265 @@
+---
+title: 'Easily Converting Videos with FFmpeg'
+publishedAt: '2024-01-15'
+image: '/abdullah.jpg'
+summary: 'A guide to finding the most efficient settings for video conversion using FFmpeg, balancing speed, quality, and file size.'
+---
+
+# Introduction
+
+Nowadays, there are many tools available for processing (trimming, resizing, and applying filters) and converting video and audio files (in general, media). However, one tool stands out from the rest and is perhaps used behind the scenes by many ([Yusuf İpek Video](https://www.youtube.com/watch?v=clrVhDx_A-s)). This tool/software, known as FFmpeg, is free, [open-source](https://github.com/FFmpeg/FFmpeg), and is developed under licenses such as LGPL, GPL2, and GPL3 (with some other licenses used for different parts and time periods).
+
+Original license explanation:
+
+> Most files in FFmpeg are under the GNU Lesser General Public License version 2.1 or later (LGPL v2.1+). Read the file COPYING.LGPLv2.1 for details. Some other files have MIT/X11/BSD-style licenses. In combination the LGPL v2.1+ applies to FFmpeg.
+
+> Some optional parts of FFmpeg are licensed under the GNU General Public License version 2 or later (GPL v2+). See the file COPYING.GPLv2 for details. None of these parts are used by default, you have to explicitly pass --enable-gpl to configure to activate them. In this case, FFmpeg's license changes to GPL v2+.
+
+In this guide, I will show you how to use FFmpeg and find the most suitable/optimized settings for our needs by considering:
+
+1. Speed,
+2. File Size,
+3. Visual Quality, and
+4. (Optional) Compatibility.
+
+## Technical Explanation Section
+
+For those who want to fully understand the process or know what’s happening behind the scenes, I will begin by explaining the technical aspects. If you prefer, you can skip this section and simply click on the "AB-AV1 Software" section on the side.
+
+### What Are Video/Audio Codecs?
+
+[Video/Audio codecs](https://ffmpeg.org/ffmpeg-codecs.html) are algorithms used to compress and/or re-encode video and audio files. This process (encode/decode) is crucial for achieving smaller file sizes and reducing bandwidth during transmission and storage. For example, if we were to store a 1-minute 1080p 30fps video uncompressed ([Source](https://dvsgroup.com/tools/BitRateCalculator.php)), it would take up about 10.5 GB. In the world of 4K 10-bit HDR, this can escalate to an extreme figure of approximately 55.6 GB per minute.
+
+The enormity of these sizes becomes apparent when you consider that a 4K UHD Blu-ray disc can hold, instead of 1 minute of uncompressed video, around 3 hours and 30 minutes of content like [The Irishman](https://www.imdb.com/title/tt1302006/) with multiple language tracks, subtitles, and extra features.
+
+#### x264: H.264 Video Encoder
+
+x264 is a video encoder that implements the H.264/MPEG-4 AVC (Advanced Video Codec) standard. This codec is optimized to provide high-quality video (by the standards of its time) and is supported by a wide range of devices. At its release, x264 delivered high compression ratios, enabling access to high-quality videos with low bandwidth usage. It is still supported by many electronic devices both in software and hardware. However, it struggles to meet today’s demands for higher quality and smaller file sizes. What was once considered excellent compression and quality is now seen by some as insufficient.
+
+#### x265: H.265/HEVC Video Encoder
+
+x265 is a video encoder that implements the H.265/HEVC (High-Efficiency Video Coding) standard, the successor to H.264. Compared to x264, x265 offers better compression performance. This means lower bandwidth usage and smaller file sizes at the same quality level. Like its predecessor, H.265 is supported on many devices, both via software and, in some cases, hardware acceleration. The difference in compression between the two codecs is roughly 25% to 50% for the same quality.
+
+#### AV1 Video Encoder
+
+AV1 is expected to be one of the future standards, designed specifically to provide highly efficient video. Developed as an alternative to x264 and x265, AV1 is notable for being open-source and royalty-free. It is renowned for delivering much higher quality video (its primary goal) while using significantly lower bandwidth. Its main advantage is offering exceptional quality even at very low bitrates. For live streaming, this holds huge promise, delivering a great experience even at around 3.5 Mbps.
+
+#### Comparison: x264, x265, and AV1
+
+- **Compression Ratios:** x265 and AV1 generally provide better compression ratios.
+- **Performance:** x264 is known for low resource consumption (CPU/GPU) and fast playback, while x265 and AV1 can offer higher performance and better compression.
+- **Compatibility:** Unlike the others, AV1 has not yet achieved widespread device support (both for encoding and playback). For those who prioritize maximum compatibility, x264 remains the best option.
+
+#### Short Conclusion
+
+Each video encoder performs better under specific conditions, and the choice depends on your usage and requirements. x264, x265, and AV1 each have their advantages, and FFmpeg offers a wide range of video processing capabilities using these encoders. Personally, I prefer H265 since I consider AV1 not yet mature enough for home users. I will continue my explanation based on H265 for the rest of this guide.
+
+### What Is a Preset?
+
+Presets in FFmpeg are [predefined settings](https://x265.readthedocs.io/en/stable/presets.html) used to encode a video or audio file to a specific quality and size. These settings consist of a group of parameters (commands) used by the codec and are generally designed to balance quality and file size.
+
+Faster encoding with presets generally results in lower quality, so users can choose different presets based on their needs. For x265, the predefined presets are as follows:
+
+1. `ultrafast`: The fastest encoding but with lower quality.
+2. `superfast`: Slightly slower than ultrafast, offering better quality.
+3. `veryfast`: A balanced compromise between speed and quality.
+4. `faster`: Higher quality with a slightly longer encoding time.
+5. `fast`: Standard settings, a good balance for general use.
+6. `medium`: A balance between quality and speed.
+7. `slow`: Better quality but with longer encoding times.
+8. `slower`: Even higher quality than slow, with an even longer encoding time.
+9. `veryslow`: The highest quality, but the longest encoding time.
+10. `placebo`: As the name suggests, not a recommended preset.
+
+![X265 Encoding](/images/ffmpeg-abav1/1.png)
+
+Personally, I usually use either the veryfast or slow presets. For my various needs, these two typically offer the best results. However, the outcome may vary depending on the input video and its specific characteristics. (See, for example, [Issues with Compressing Anime Videos](https://www.youtube.com/watch?v=mntswiXuvfI).)
+
+### What Are CRF, VBR, and CBR?
+
+**CRF (Constant Rate Factor)** is a parameter used to control the quality of a video file. In this method, the codec automatically adjusts the bitrate to achieve a target quality level. That is, the user does not manually specify a bitrate, but rather selects a quality level. A lower CRF value indicates higher quality, but results in a larger file size.
+
+**CBR (Constant Bitrate)** ensures that the video is encoded at a specific, fixed bitrate. This allows you to predetermine the file size, but the quality may vary. CBR is particularly useful when there is a specific bandwidth constraint or when the transmission medium supports only a certain bitrate. Since a fixed value is applied per second, noticeable quality differences can occur between dynamic and static scenes. You might have wondered, "Why does the video quality drop when confetti is thrown?" If not, [Tom Scott](https://www.youtube.com/watch?v=r6Rp-uo6HmI) has an educational video on this topic.
+
+**VBR (Variable Bitrate)** encodes each frame of the video with varying bitrates. This can improve quality by allocating a higher bitrate when more detail is present in the scene, though the file size will be more variable. This setting is essentially similar to CRF, but I wanted to explain it separately since they are sometimes mentioned individually or together in various contexts.
+
+![CRF-VMAF](/images/ffmpeg-abav1/2.png)
+
+I typically use CRF values of 22 or 24. If I want a faster result, I might use 26 or 28. Note that CRF values do not increase in increments of 1—you could even use something like 22.03, although such fine-tuning is usually unnecessary. In general, changes are made in steps of 2.
+
+### What Are Profile Types and Levels?
+
+In video encoding, a profile defines a set of parameters optimized for a specific application scenario (film, video, animation, slideshow, etc.). Each profile includes different compression and quality settings suitable for a particular use case or device.
+
+Profile levels, on the other hand, are a set of limitations defined by the codec, such as maximum resolution, maximum bitrate, and other technical characteristics. A specific level, combined with a profile, defines the capabilities of a codec.
+
+For x265, predefined profiles include `auto`, `main`, `main10`, `main448`, `main448-intra`, `high`, and `mainstillpicture`, among others. Each profile contains settings optimized for a particular scenario. For more detailed technical information, you can refer to the [Wikipedia page](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding_tiers_and_levels). Personally, unless absolutely necessary, I use the main profile and level 5.1.
+
+### What Is VMAF and Why Do We Use It?
+
+VMAF, developed by Netflix and introduced in 2014, is a video quality metric designed to better understand the viewer experience and assess the quality of video content. If you appreciate the high picture quality of Netflix’s content, you can trust VMAF as a quality metric.
+
+FFmpeg uses this metric to help optimize video encoding settings. Once a certain quality threshold is reached, it becomes difficult for the human eye to discern further improvements (or degradations), and it is impractical to manually monitor quality across hours of footage. As discussed earlier in this guide, improper or uninformed use of compression technologies can significantly impact the viewer experience. In this context, technologies like Video Multimodal Assessment Fusion (VMAF) (along with SSIM or PSNR) help us choose more efficient compression settings without unnecessarily increasing file size. After all, a larger file size does not always equate to higher quality. That’s why we use VMAF as our quality metric.
+
+VMAF scores range from 0 to 100 and indicate the similarity between the original and the converted (or slightly degraded) video. A score of 90 or above is generally considered nearly identical in quality (to the point that any differences are barely noticeable), and scores above 95 can be regarded as indistinguishable even by the keenest eyes.
+
+Personally, I consider a video conversion successful when I can achieve a minimum VMAF score of 90.
+
+## Automated Process: The AB-AV1 Software
+
+AB-AV1 is open-source software developed by volunteers under the MIT license and is available on [GitHub](https://github.com/alexheretic/ab-av1). The software focuses on and aims to solve the problem of quickly obtaining the optimal settings for video conversion with FFmpeg—without getting bogged down in technical details. As of the publication of this guide, the software follows this approach: It first takes a sample segment from every 12-minute portion of the video. These sample segments can be up to 20 seconds long if the video isn’t very short. It then combines these sample segments with different CRF and preset values and calculates the resulting VMAF scores. Instead of a brute-force approach that starts at 1 and goes up to 50, it begins in the middle (e.g., CRF 25 with preset medium) and moves toward the extremes. Once it finds 4-5 results that meet the desired criteria, it stops the search—thus quickly arriving at an optimal solution.
+
+Before discovering this software, I used to manually run commands for all CRF values between 20 and 30 and for every preset, then record their VMAF scores in an Excel spreadsheet. This was an extremely time-consuming process that required significant technical expertise. Here are a couple of screenshots from those earlier experiments to illustrate just how much hassle I avoided:
+
+![1](/images/ffmpeg-abav1/3.jpeg)
+![2](/images/ffmpeg-abav1/4.jpeg)
+
+The tests I conducted using two sample videos took approximately one day. Meanwhile, while I was using my computer for other tasks, the system was running these tests in the background.
+
+### Downloading and/or Installing the Software
+
+The software supports both Linux and Windows operating systems. For Windows, you can simply download the exe file and use it. If you’re using Arch Linux, the package is available in the [AUR](https://aur.archlinux.org/packages/ab-av1). Users of other Linux distributions can either download the binary or compile it themselves. Installation instructions are available on the [GitHub page](https://github.com/alexheretic/ab-av1?tab=readme-ov-file#install).
+
+### Software Settings
+
+After installing the software, you can view the help section or detailed information by running `ab-av1 -h`. You will see a screen similar to the following:
+
+```
+AV1 encoding with fast VMAF sampling
+Usage: ab-av1 <COMMAND>
+Commands:
+sample-encode Encode & analyse input samples to predict how a full encode would go.
+This is much quicker than a full encode/vmaf run.
+vmaf Full VMAF score calculation, distorted file vs reference file.
+Works with videos and images.
+encode Invoke ffmpeg to encode a video or image
+crf-search Interpolated binary search using sample-encode to find the best crf
+value delivering min-vmaf & max-encoded-percent.
+auto-encode Automatically determine the best crf to deliver the min-vmaf and use it to encode a video
+or image.
+print-completions Print shell completions
+help Print this message or the help of the given subcommand(s)
+Options:
+-h, --help Print help
+-V, --version Print version
+```
+
+A basic usage scenario is as follows:
+
+```
+ab-av1 crf-search --encoder libx265 -i yourfile.extension
+```
+
+This command will provide you with results within the default parameter ranges considered by the software for x265. If you want to fine-tune the settings, you can specify your desired quality as a VMAF score like so:
+
+```
+ab-av1 crf-search --encoder libx265 --min-vmaf 95 -i yourfile.extension
+```
+
+If you’re wondering how I use it, here’s an example:
+
+```
+ab-av1 crf-search --encoder libx265 --min-vmaf 90 --min-crf 20 --max-crf 30 --crf-increment 2 --preset veryfast --enc x265-params=level=5.1:high-tier=1 -i yourfile.extension
+```
+
+For example, when testing on the well-known video [Tears of Steel](https://mango.blender.org/download/), you might see output like:
+
+```
+- crf 25 VMAF 94.40 (33%) (cache)
+- crf 27 VMAF 92.30 (26%) (cache)
+- crf 30 VMAF 87.55 (17%) (cache)
+- crf 28 VMAF 90.94 (22%) (cache)
+- crf 29 VMAF 89.36 (20%) (cache)
+  00:00:00 ################################################(sampling crf 29, eta 0s)
+  Encode with: ab-av1 encode -e libx265 -i tears_of_steel_1080p.mov --crf 28 --preset veryfast --enc x265-params=level=5.1:high-tier=1
+
+crf 28 VMAF 90.94 predicted video stream size 124.37 MiB (22%) taking 18 minutes
+
+```
+
+This output indicates that the software—using cached results from previous runs—recommends the settings **CRF: 28, Preset: Veryfast**. It predicts that the conversion will take about 18 minutes and that the resulting file size will be roughly 22% of the original (nearly one-fifth). Note that this prediction is based on sample segments, so a small margin of error is possible. Once you have these settings, you can either run the corresponding FFmpeg commands manually or simply copy the provided command (which starts with `Encode with: ab-av1 ...`) to perform the conversion directly within the tool.
+
+### Real-World Tests
+
+Since home setups don’t always reflect commercial-grade systems—and to verify that all this theory really works—testing is essential. I downloaded the version of a video titled "Full Movie – First version (HD rendered) - HD 1080p (mov)". This video is 12 minutes and 14 seconds long with a size of 557 MB (583,774,083 bytes). When converted using FFmpeg, the output was as follows:
+
+```
+x265 [info]: HEVC encoder version 3.5
+x265 [info]: build info [Linux][GCC 11.2.0][64 bit] 8bit+10bit+12bit
+x265 [info]: using cpu capabilities: MMX2 SSE2Fast LZCNT SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+x265 [warning]: Specifying a decoder level with constant rate factor rate-control requires
+x265 [warning]: enabling VBV with vbv-bufsize=160000kb vbv-maxrate=160000kbps. VBV outputs are non-deterministic!
+x265 [info]: Main profile, Level-5.1 (High tier)
+x265 [info]: Thread pool created using 4 threads
+x265 [info]: Slices : 1
+x265 [info]: frame threads / pool features : 2 / wpp(13 rows)
+x265 [info]: Coding QT: max CU size, min CU size : 64 / 8
+x265 [info]: Residual QT: max TU size, max depth : 32 / 1 inter / 1 intra
+x265 [info]: ME / range / subpel / merge : hex / 57 / 1 / 2
+x265 [info]: Keyframe min / max / scenecut / bias : 24 / 250 / 40 / 5.00
+x265 [info]: Lookahead / bframes / badapt : 15 / 4 / 0
+x265 [info]: b-pyramid / weightp / weightb : 1 / 1 / 0
+x265 [info]: References / ref-limit cu / depth : 2 / on / on
+x265 [info]: AQ: mode / str / qg-size / cu-tree : 2 / 1.0 / 32 / 1
+x265 [info]: Rate Control / qCompress : CRF-28.0 / 0.60
+x265 [info]: VBV/HRD buffer / max-rate / init : 160000 / 160000 / 0.900
+x265 [info]: tools: rd=2 psy-rd=2.00 early-skip rskip mode=1 signhide tmvp
+x265 [info]: tools: fast-intra strong-intra-smoothing lslices=5 deblock sao
+frame=17620 fps= 22 q=32.8 Lsize= 124521kB time=00:12:14.07 bitrate=1389.6kbits/s speed=0.909x
+x265 [info]: frame I: 172, Avg QP:26.60 kb/s: 9754.63
+x265 [info]: frame P: 3528, Avg QP:28.30 kb/s: 3513.82
+x265 [info]: frame B: 13920, Avg QP:34.37 kb/s: 577.41
+x265 [info]: Weighted P-Frames: Y:4.1% UV:2.5%
+x265 [info]: consecutive B-frames: 4.8% 0.6% 0.8% 1.0% 92.8%
+
+encoded 17620 frames in **807.69s (21.82 fps)**, 1254.95 kb/s, Avg QP:33.08
+
+```
+
+On my device (CPU i5-7300U), the encoding took approximately 807 seconds (about 13.5 minutes), and the resulting file size was 122 MB (127,509,197 bytes). I then calculated the VMAF score for the output using FFmpeg with the following command:
+
+```
+ffmpeg -i output.mkv -i tears_of_steel_1080p.mov -lavfi libvmaf -f null –
+
+```
+
+This produced the output:
+
+```
+[out#0/null @ 0x558d1bc41180] video:8259kB audio:126464kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
+frame=17620 fps= 12 q=-0.0 Lsize=N/A time=00:12:14.16 bitrate=N/A speed=0.492x
+[Parsed_libvmaf_0 @ 0x558d1a9b2880] VMAF score: 91.112250
+
+```
+
+![results](/images/ffmpeg-abav1/5.jpeg)
+
+In summary, when we put everything together, the results are very encouraging and even exceed the initial expectations. Considering that I was using my PC for other tasks while these processes were running, the outcome is truly impressive.
+
+## Sections Not Covered in This Guide
+
+In this guide, I did not cover the topic of re-encoding or converting audio files. If there is enough demand, I can add a section on that. However, since even using a bitrate as high as 192 kb/s doesn’t significantly affect the file size, I chose not to include it. For those who are true audiophiles and own a 5.1 or 7.1 sound system, this section might be relevant. Otherwise, you can simply leave the audio as is—since no additional settings are applied by default.
+
+# Final Words and References
+
+Now you, too, can compress your videos almost losslessly like a professional and save valuable storage space. Whether you want to store your Blu-ray and UltraHD Blu-ray collections in a more space-efficient manner or set up a home cinema system like Plex, you can now do so with confidence. Until the next guide—happy viewing and best wishes.
+
+**References:**
+
+- https://github.com/FFmpeg/FFmpeg
+- https://ffmpeg.org/ffmpeg-codecs.html
+- https://dvsgroup.com/tools/BitRateCalculator.php
+- https://www.imdb.com/title/tt1302006/
+- https://x265.readthedocs.io/en/stable/presets.html
+- https://streaminglearningcenter.com (Graphics)
+- https://goughlui.com (Graphics)
+- https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding_tiers_and_levels
+- https://github.com/Netflix/vmaf
+- https://github.com/alexheretic/ab-av1
+- https://aur.archlinux.org/packages/ab-av1
+- https://github.com/alexheretic/ab-av1
+- https://mango.blender.org/
+- https://ottverse.com/analysis-of-svt-av1-presets-and-crf-values/
+- https://superuser.com/questions/1556953/why-does-preset-veryfast-in-ffmpeg-generate-the-most-compressed-file-compared
+- https://codecalamity.com/encoding-uhd-4k-hdr10-videos-with-ffmpeg/
+- First Published: [BTT](https://btt.community/t/ffmpeg-ile-video-cevirmek-icin-en-uygun-ayari-kolayca-bulmak/4443)
