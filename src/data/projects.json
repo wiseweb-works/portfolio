@@ -3,7 +3,7 @@
     {
       "name": "Tradingview Telegram Alerts",
       "description": "Real-time trading alerts with chart snapshots sent to Telegram, designed to keep traders informed and responsive to market changes",
-      "image": "/tv-tele-alerts.png",
+      "image": "/markdown.png",
       "tags": [
         "Python",
         "FastAPI",
@@ -24,7 +24,7 @@
       "name": "NFTVue",
       "description": "Non-Fungible Tokens (NFTs) Gallery Viewer website that allows users to connect their crypto wallets to view and verify their tokens",
       "href": "https://nftvue.vercel.app",
-      "image": "/nftvue.png",
+      "image": "/markdown.png",
       "tags": [
         "NextJS",
         "TailwindCSS",
@@ -46,7 +46,7 @@
       "name": "Portfolio 2023 (Outdated)",
       "description": "Simple markdown portfolio made with Astro 🚀",
       "href": "https://tedawf-dot-com.netlify.app",
-      "image": "/old-portfolio.png",
+      "image": "/markdown.png",
       "tags": ["Astro", "TailwindCSS", "Netlify", "SEO"],
       "links": [
         {
@@ -65,7 +65,7 @@
       "name": "Rapid Ride Fight (Final Year)",
       "description": "3D capture-the-flag, multiplayer boat fighting, with smart AI and water graphics",
       "href": "https://games.digipen.edu/games/rapid-ride-fight",
-      "image": "/rrf.png",
+      "image": "/markdown.png",
       "tags": ["C/C++", "OpenGL", "Custom Game Engine", "3D"],
       "links": [
         {
@@ -84,7 +84,7 @@
       "name": "Glowing Under (2nd Year)",
       "description": "2D platformer with a focus on puzzle-solving, no-death exploration and storytelling",
       "href": "https://games.digipen.edu/games/glowing-under",
-      "image": "/gu.png",
+      "image": "/markdown.png",
       "tags": ["C/C++", "OpenGL", "Custom Game Engine", "2D"],
       "links": [
         {
