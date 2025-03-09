@@ -1,57 +1,53 @@
 {
   "career": [
     {
-      "name": "DBS Bank",
-      "href": "https://www.dbs.com.sg",
-      "title": "Graduate Associate (SEED Programme)",
-      "logo": "/markdown.png",
-      "start": "Jul 2023",
+      "name": "BTT Community, Website",
+      "href": "https://btt.community/u/wise/",
+      "title": "Administrator (Remote and Voluntarily)",
+      "logo": "/btt.png",
+      "start": "Oct. 2023",
+      "end": "",
       "description": [
-        "Developed the Java backend for a bank account servicing process with multiple channel integrations using Activiti workflow",
-        "Built a custom database migration tool using Python and MariaDB and facilitated the migration of 1000+ processes from a vendor platform"
+        "Administration of the server",
+        "Maintenance of email services",
+        "Carry out any necessary hot fixes"
       ]
     },
     {
-      "name": "Singapore Institute of Technology",
-      "href": "https://www.singaporetech.edu.sg",
-      "title": "Software Developer (Contract)",
-      "logo": "/markdown.png",
-      "start": "Apr 2023",
-      "end": "Jun 2023",
-      "description": [
-        "Built NFTVue, a NFT gallery website that allows students to connect their crypto wallets to view and verify their school event-issued NFTs",
-        "Worked on DemoConstruct, a full-stack web application (React + Python) that uses Meshroom to reconstruct 3D models from captured images"
-      ],
-      "links": [
-        {
-          "name": "NFTVue",
-          "href": "https://nftvue.vercel.app",
-          "icon": "globe"
-        }
-      ]
+      "name": "Placeholder",
+      "href": "/",
+      "title": "(Remote and Voluntarily)",
+      "logo": "/remote.png",
+      "start": "Aug 2021",
+      "end": "",
+      "description": [""]
     },
     {
-      "name": "DBS Bank",
-      "href": "https://www.dbs.com.sg",
-      "title": "Software Developer (Intern)",
-      "logo": "/markdown.png",
-      "start": "May 2022",
-      "end": "Dec 2022",
-      "description": [
-        "Worked on the backend for the digital exchange and asset custody application using Spring Boot and Java",
-        "Built an admin dashboard web application for a DBS Metaverse event using Spring Security and Angular"
-      ]
+      "name": "Lawyer, Istanbul, Turkey",
+      "href": "https://istanbulbarosu.org.tr/",
+      "title": "Lawyer and Consultant (Self-Employed)",
+      "logo": "/lawyer.png",
+      "start": "Sep 2017",
+      "end": "June 2021",
+      "description": ["GPDR"]
     },
     {
-      "name": "Activate Interactive Pte Ltd",
-      "href": "https://www.activate.sg",
-      "title": "Software Developer (Intern)",
-      "logo": "/markdown.png",
-      "start": "May 2019",
-      "end": "Aug 2019",
-      "description": [
-        "Developed RP Connect, the iOS and Android mobile app for Republic Polytechnic using React Native"
-      ]
+      "name": "Bonilabs Technology, Istanbul, Turkey",
+      "href": "https://www.bonilabs.com/",
+      "title": "Frontend Developer (Junior)",
+      "logo": "/bonilabs.png",
+      "start": "Sep 2014",
+      "end": "June 2017",
+      "description": ["Frontend Development", "Design Principles"]
+    },
+    {
+      "name": "Kara Agency, Istanbul, Turkey (Closed)",
+      "href": "https://karaajans.com/",
+      "title": "System Administrator (Junior)",
+      "logo": "/karaajans.png",
+      "start": "July 2012",
+      "end": "July 2014",
+      "description": ["System Administration", "Network Administration"]
     }
   ]
 }

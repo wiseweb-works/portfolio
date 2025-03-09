@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
-    "build": "npm run gen && next build",
-    "gen": "npx ts-node ./scripts/generate.ts",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },

@@ -5,7 +5,12 @@ import Projects from '@/components/Projects';
 import Socials from '@/components/Socials';
 import { Button } from '@/components/ui/Button';
 import { getPosts } from '@/lib/posts';
-import { ArrowDownRight, ArrowRightIcon, FileDown } from 'lucide-react';
+import {
+  ArrowDownRight,
+  ArrowRightIcon,
+  BadgeCheck,
+  FileDown,
+} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import path from 'path';
@@ -29,7 +34,11 @@ export default async function Home() {
           priority
         />
         <div className="flex flex-col">
-          <h1 className="title text-4xl">Hello, I’m Abdullah! 👋</h1>
+          <h1 className="title text-4xl flex items-center gap-3">
+            Hello, I’m Abdullah!{' '}
+            <BadgeCheck size={32} color="hsl(204 88% 53%)" />
+          </h1>
+
           <p className="mt-4 font-light">
             {new Date().getFullYear() - ABDULLAH_BIRTH}
             -year-old <s>software</s> Fullstack Developer based in Germany 🇩🇪

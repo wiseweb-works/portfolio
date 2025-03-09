@@ -1,10 +1,10 @@
 ---
-title: "Increasing SSH security on Linux Servers"
-date: 2021-10-05
-tags: ["linux", "ssh", "security", "audit"]
-author: "Wise"
-draft: false
+title: 'Increasing SSH security on Linux Servers'
+publishedAt: '2021-10-05'
+image: '/images/ssh-security/ssh.png'
+summary: 'A guide to how to improve SSH security on Linux servers'
 ---
+
 # Increasing SSH security on Linux Servers
 
 Today, I will talk about how we can keep the SSH service, which allows us to connect securely when you rent a server, more secure and away from malicious requests from outside. Foremost, I will describe the process under three different headings: simple, recommended and advanced. Title contents are gradually considered according to personal requirements. Although the titles are linked to each other, leaving them at a desired stage will not pose a problem.
@@ -15,9 +15,7 @@ First, we need to install the updates via the console with the package manager o
 
 ```bash
 Ubuntu: sudo apt update && sudo apt upgrade -y
-
 Fedora: sudo yum update -y
-
 Arch Linux: sudo pacman -Syyu
 ```
 
@@ -51,9 +49,7 @@ In addition to the previous settings, we will make additional settings such as u
 After typing ssh-keygen -t rsa -b 4096 #, enter the password you want in response to the questions below
 >>>> Enter passphrase (empty for no passphrase): [Press enter key]
 >>>> Enter same passphrase again: [Press enter key]
-
 or
-
 ssh-keygen -t ecdsa -b 521 # Generates more secure and faster ecliptic key. Enter the password you want in response to the questions below
 >>>> Enter passphrase (empty for no passphrase): [Press enter key]
 >>>> Enter same passphrase again: [Press enter key]
@@ -116,7 +112,3 @@ After making the settings, apply the settings with the command "sudo sshd -t" an
 ```text
 You can use the command ssh -i ~/.ssh/KEY_NAME USER_NAME@SERVER_IP_ADRESS -p PORT_NUMBER #. You can continue by saying Enter to the incoming notifications.
 ```
-
-# End
-
-This article was previously published at <https://teknolojirehberleri.xyz>. In order to create a personal portfolio, I felt the need to republish it on my personal site.
