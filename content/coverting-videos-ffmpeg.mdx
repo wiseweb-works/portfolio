@@ -1,7 +1,7 @@
 ---
 title: 'Easily Converting Videos with FFmpeg'
 publishedAt: '2024-01-15'
-image: '/images/ffmpeg-abav1/av1.svg'
+image: '/markdown/ffmpeg-abav1/av1.svg'
 summary: 'A guide to finding the most efficient settings for video conversion using FFmpeg, balancing speed, quality, and file size.'
 ---
 
@@ -71,7 +71,7 @@ Faster encoding with presets generally results in lower quality, so users can ch
 9. `veryslow`: The highest quality, but the longest encoding time.
 10. `placebo`: As the name suggests, not a recommended preset.
 
-![X265 Encoding](/images/ffmpeg-abav1/1.png)
+![X265 Encoding](/markdown/ffmpeg-abav1/1.png)
 
 Personally, I usually use either the veryfast or slow presets. For my various needs, these two typically offer the best results. However, the outcome may vary depending on the input video and its specific characteristics. (See, for example, [Issues with Compressing Anime Videos](https://www.youtube.com/watch?v=mntswiXuvfI).)
 
@@ -83,7 +83,7 @@ Personally, I usually use either the veryfast or slow presets. For my various ne
 
 **VBR (Variable Bitrate)** encodes each frame of the video with varying bitrates. This can improve quality by allocating a higher bitrate when more detail is present in the scene, though the file size will be more variable. This setting is essentially similar to CRF, but I wanted to explain it separately since they are sometimes mentioned individually or together in various contexts.
 
-![CRF-VMAF](/images/ffmpeg-abav1/2.png)
+![CRF-VMAF](/markdown/ffmpeg-abav1/2.png)
 
 I typically use CRF values of 22 or 24. If I want a faster result, I might use 26 or 28. Note that CRF values do not increase in increments of 1—you could even use something like 22.03, although such fine-tuning is usually unnecessary. In general, changes are made in steps of 2.
 
@@ -111,8 +111,8 @@ AB-AV1 is open-source software developed by volunteers under the MIT license and
 
 Before discovering this software, I used to manually run commands for all CRF values between 20 and 30 and for every preset, then record their VMAF scores in an Excel spreadsheet. This was an extremely time-consuming process that required significant technical expertise. Here are a couple of screenshots from those earlier experiments to illustrate just how much hassle I avoided:
 
-![1](/images/ffmpeg-abav1/3.jpeg)
-![2](/images/ffmpeg-abav1/4.jpeg)
+![1](/markdown/ffmpeg-abav1/3.jpeg)
+![2](/markdown/ffmpeg-abav1/4.jpeg)
 
 The tests I conducted using two sample videos took approximately one day. Meanwhile, while I was using my computer for other tasks, the system was running these tests in the background.
 
@@ -232,7 +232,7 @@ frame=17620 fps= 12 q=-0.0 Lsize=N/A time=00:12:14.16 bitrate=N/A speed=0.492x
 
 ```
 
-![results](/images/ffmpeg-abav1/5.jpeg)
+![results](/markdown/ffmpeg-abav1/5.jpeg)
 
 In summary, when we put everything together, the results are very encouraging and even exceed the initial expectations. Considering that I was using my PC for other tasks while these processes were running, the outcome is truly impressive.
 

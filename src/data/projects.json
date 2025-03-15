@@ -4,7 +4,7 @@
       "name": "Stock Management APP",
       "description": "A React-based stock management application using Redux Toolkit, MUI, Axios, and Formik. 🚀",
       "href": "https://react-mui-stock-app.vercel.app/",
-      "image": "/markdown.png",
+      "image": "/stockapp.png",
       "tags": ["React 19", "Redux", "Vercel", "Github", "Axios", "Formik"],
       "links": [
         {
@@ -21,9 +21,9 @@
     },
     {
       "name": "Blog APP",
-      "description": "A Fullstack blog application built with ReactJS, featuring authentication and CRUD operations.",
+      "description": "A modern and responsive personal portfolio built with Next.js, TypeScript, and Tailwind CSS, featuring blog support, dark mode, and SEO optimization.",
       "href": "https://react-blog-app-tsc.vercel.app/",
-      "image": "/markdown.png",
+      "image": "/blogapp.png",
       "tags": ["React 19", "TypeScript", "Material UI", "React Query"],
       "links": [
         {
@@ -42,7 +42,7 @@
       "name": "Shopping APP",
       "description": "A shopping website built with Vite and vanilla JS. Product listing, filtering and cart functionality.",
       "href": "https://wiseweb-works.github.io/shopping-site-vite-vanilla-js/",
-      "image": "/markdown.png",
+      "image": "/shoppingapp.png",
       "tags": ["Vanilla JS", "Bootstrap", "FontAwesome", "Vite"],
       "links": [
         {
@@ -58,10 +58,10 @@
       ]
     },
     {
-      "name": "Placeholder",
-      "description": "description 🚀",
+      "name": "My Portfolio",
+      "description": "My Personal Portfolio  using Redux Toolkit, MUI, Axios, and Formik. ",
       "href": "https://tedawf-dot-com.netlify.app",
-      "image": "/markdown.png",
+      "image": "/portfolio.png",
       "tags": ["Astro", "TailwindCSS", "Netlify", "SEO"],
       "links": [
         {

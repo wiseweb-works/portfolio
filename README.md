@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A modern, personal portfolio website built with **Next.js 15**, **TypeScript**, and **Tailwind CSS**, designed to showcase projects, blog posts, and achievements in a visually appealing and accessible manner.
 
-## Getting Started
+## About The Project
 
-First, run the development server:
+This portfolio website serves as a digital resume and project showcase. It features a clean and minimalistic design while utilizing the latest web technologies to provide a fast and seamless experience.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Dark/Light Mode**: Uses `next-themes` for dynamic theme switching.
+- **MDX Blog Support**: Enables writing blog posts using Markdown and MDX.
+- **SEO Optimization**: Configured for better search engine visibility.
+- **Radix UI Components**: Utilizes Radix UI for accessible and interactive elements.
+- **Fast and Efficient**: Powered by Next.js with optimized performance.
+- **Fully Responsive**: Mobile-friendly design ensuring accessibility across all devices.
+- **Tailwind CSS**: Highly customizable styling with a modern utility-first approach.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Built with
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Next.js 15** (for server-side rendering and static site generation)
+- **TypeScript** (for type safety and maintainability)
+- **Tailwind CSS** (for efficient styling and design consistency)
+- **MDX** (for writing blog posts using Markdown and JSX)
+- **Radix UI** (for accessible UI components)
+- **Zod** (for data validation and form handling)
 
-## Learn More
+## What I learned
 
-To learn more about Next.js, take a look at the following resources:
+Building this portfolio helped me gain deeper insights into modern frontend development, including:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Advanced **Next.js** features like **App Router**, **Static Site Generation (SSG)**, and **Server Components**.
+- Efficient state and theme management with **next-themes** and **Zod validation**.
+- Writing interactive blogs using **next-mdx-remote**.
+- Improving accessibility and UI design with **Radix UI**.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Useful resources
 
-## Deploy on Vercel
+1. [Next.js Documentation](https://nextjs.org/docs) - Official Next.js docs covering all essential features.
+2. [Tailwind CSS Docs](https://tailwindcss.com/docs) - A great reference for designing with Tailwind.
+3. [Radix UI](https://www.radix-ui.com/) - A fantastic library for accessible UI components.
+4. [Zod](https://zod.dev/) - For schema-based form validation and TypeScript safety.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Acknowledgments
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This portfolio project is a reflection of my journey in web development. Special thanks to open-source communities and resources that inspired the project. Looking forward to continually improving and expanding it with new features!
