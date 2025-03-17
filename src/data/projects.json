@@ -21,7 +21,7 @@
     },
     {
       "name": "Blog APP",
-      "description": "A modern and responsive personal portfolio built with Next.js, TypeScript, and Tailwind CSS, featuring blog support, dark mode, and SEO optimization.",
+      "description": "A modern and responsive personal portfolio built with Next.js, TypeScript and Tailwind CSS",
       "href": "https://react-blog-app-tsc.vercel.app/",
       "image": "/blogapp.png",
       "tags": ["React 19", "TypeScript", "Material UI", "React Query"],
@@ -59,20 +59,15 @@
     },
     {
       "name": "My Portfolio",
-      "description": "My Personal Portfolio  using Redux Toolkit, MUI, Axios, and Formik. ",
-      "href": "https://tedawf-dot-com.netlify.app",
+      "description": "Personal Portfolio built with Next.js, TypeScript and Tailwind CSS with blog and dark mode support",
+      "href": "https://portfolio.abdullahkoyuncu.de",
       "image": "/portfolio.png",
-      "tags": ["Astro", "TailwindCSS", "Netlify", "SEO"],
+      "tags": ["Nextjs", "React 19", "Tailwind", "Lucid", "TypeScript"],
       "links": [
         {
           "name": "Website",
-          "href": "https://tedawf-dot-com.netlify.app",
+          "href": "https://portfolio.abdullahkoyuncu.de",
           "icon": "globe"
-        },
-        {
-          "name": "Source",
-          "href": "https://github.com/tedawf/portfolio-2023",
-          "icon": "github"
         }
       ]
     }
