@@ -4,7 +4,7 @@
       "name": "Stock Management APP",
       "description": "A React-based stock management application using Redux Toolkit, MUI, Axios, and Formik. 🚀",
       "href": "https://react-mui-stock-app.vercel.app/",
-      "image": "/stockapp.png",
+      "image": "/stockapp.jpg",
       "tags": ["React 19", "Redux", "Vercel", "Github", "Axios", "Formik"],
       "links": [
         {
@@ -23,7 +23,7 @@
       "name": "Blog APP",
       "description": "A modern and responsive personal portfolio built with Next.js, TypeScript and Tailwind CSS",
       "href": "https://react-blog-app-tsc.vercel.app/",
-      "image": "/blogapp.png",
+      "image": "/blogapp.jpg",
       "tags": ["React 19", "TypeScript", "Material UI", "React Query"],
       "links": [
         {
@@ -42,7 +42,7 @@
       "name": "Shopping APP",
       "description": "A shopping website built with Vite and vanilla JS. Product listing, filtering and cart functionality.",
       "href": "https://wiseweb-works.github.io/shopping-site-vite-vanilla-js/",
-      "image": "/shoppingapp.png",
+      "image": "/shoppingapp.jpg",
       "tags": ["Vanilla JS", "Bootstrap", "FontAwesome", "Vite"],
       "links": [
         {
@@ -61,13 +61,32 @@
       "name": "My Portfolio",
       "description": "Personal Portfolio built with Next.js, TypeScript and Tailwind CSS with blog and dark mode support",
       "href": "https://portfolio.abdullahkoyuncu.de",
-      "image": "/portfolio.png",
+      "image": "/portfolio.jpg",
       "tags": ["Nextjs", "React 19", "Tailwind", "Lucid", "TypeScript"],
       "links": [
         {
           "name": "Website",
           "href": "https://portfolio.abdullahkoyuncu.de",
           "icon": "globe"
+        }
+      ]
+    },
+    {
+      "name": "Typescript Todo APP",
+      "description": "A fast and modern Todo app built with Vite, TypeScript, and MUI. Features task management. ",
+      "href": "https://vite-ts-todo-app.vercel.app/",
+      "image": "/todoapp.jpg",
+      "tags": ["TypeScript", "Vite", "Material UI", "React 19", "Axios"],
+      "links": [
+        {
+          "name": "Website",
+          "href": "https://vite-ts-todo-app.vercel.app/",
+          "icon": "globe"
+        },
+        {
+          "name": "Source",
+          "href": "https://github.com/wiseweb-works/vite-ts-todo-app",
+          "icon": "github"
         }
       ]
     }

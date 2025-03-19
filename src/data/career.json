@@ -4,7 +4,7 @@
       "name": "BTT Community, Website",
       "href": "https://btt.community/u/wise/",
       "title": "Administrator (Remote and Voluntarily)",
-      "logo": "/btt.png",
+      "logo": "/btt.jpg",
       "start": "Oct. 2023",
       "end": "",
       "description": [
@@ -14,19 +14,22 @@
       ]
     },
     {
-      "name": "Placeholder",
+      "name": "Career Breaks",
       "href": "/",
-      "title": "(Remote and Voluntarily)",
-      "logo": "/remote.png",
+      "logo": "/remote.jpg",
       "start": "Aug 2021",
       "end": "",
-      "description": [""]
+      "description": [
+        "Improve my German language skills",
+        "Participate in various volunteer projects.",
+        "Successful completion of the Full-stack Development Course"
+      ]
     },
     {
       "name": "Lawyer, Istanbul, Turkey",
       "href": "https://istanbulbarosu.org.tr/",
       "title": "Lawyer and Consultant (Self-Employed)",
-      "logo": "/lawyer.png",
+      "logo": "/lawyer.jpg",
       "start": "Sep 2017",
       "end": "June 2021",
       "description": ["GPDR"]
@@ -35,7 +38,7 @@
       "name": "Bonilabs Technology, Istanbul, Turkey",
       "href": "https://www.bonilabs.com/",
       "title": "Frontend Developer (Junior)",
-      "logo": "/bonilabs.png",
+      "logo": "/bonilabs.jpg",
       "start": "Sep 2014",
       "end": "June 2017",
       "description": ["Frontend Development", "Design Principles"]
@@ -44,7 +47,7 @@
       "name": "Kara Agency, Istanbul, Turkey (Closed)",
       "href": "https://karaajans.com/",
       "title": "System Administrator (Junior)",
-      "logo": "/karaajans.png",
+      "logo": "/karaajans.jpg",
       "start": "July 2012",
       "end": "July 2014",
       "description": ["System Administration", "Network Administration"]
