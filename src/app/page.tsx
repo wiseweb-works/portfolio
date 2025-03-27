@@ -17,7 +17,7 @@ import path from 'path';
 
 const blogDirectory = path.join(process.cwd(), 'content');
 const ABDULLAH_BIRTH = 1994;
-const LIMIT = 2;
+const LIMIT = 4;
 
 export default async function Home() {
   const posts = await getPosts(blogDirectory, LIMIT);
@@ -41,12 +41,17 @@ export default async function Home() {
 
           <p className="mt-4 font-light">
             {new Date().getFullYear() - ABDULLAH_BIRTH}
-            -year-old <s>software</s> Fullstack Developer based in Germany 🇩🇪
+            -year-old Fullstack Developer based in Germany 🇩🇪
           </p>
           <p className="mt-2 font-light">
-            I build secure and scalable web applications, explore open-source
-            projects and occasionally debug my friends code by staring at it.
+          I develop scalable and high-performance applications using MERN Stack.
           </p>
+          <p className="mt-2 font-light">
+          Frontend with Next.js, React and TypeScript
+          <br/>
+          Backend with Node.js, Express and MongoDB.
+          </p>
+ 
           <div className="mt-4 flex items-end gap-1">
             <ArrowDownRight className="size-5 animate-bounce" />
             <p className="font-semibold">
@@ -54,7 +59,7 @@ export default async function Home() {
             </p>
           </div>
           <section className="mt-8 flex items-center gap-8">
-            <Link href="/resume.pdf" target="_blank">
+            <Link href="/resume_signed.pdf" target="_blank">
               <Button variant="outline">
                 <span className="font-semibold">Resume</span>
                 <FileDown className="ml-2 size-5" />

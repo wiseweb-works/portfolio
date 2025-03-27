@@ -8,9 +8,9 @@
       "start": "Oct. 2023",
       "end": "",
       "description": [
-        "Administration of the server",
-        "Maintenance of email services",
-        "Carry out any necessary hot fixes"
+        "Forum management,",
+        "Coordination of the moderation team",
+        "Ensuring the operation of the server and email services"
       ]
     },
     {
@@ -21,9 +21,11 @@
       "start": "Aug 2021",
       "end": "",
       "description": [
-        "Improve my German language skills",
-        "Participate in various volunteer projects.",
-        "Successful completion of the Full-stack Development Course"
+        "I developed my German language skills intensively,",
+        "In order to contribute to the community, I participated in volunteer projects for the benefit of society,",
+        "I completed a full training to become a fullstack developer,",
+        "I produced personal frontend/backend projects, and",
+        "I participated in joint projects with my friends in teamwork."
       ]
     },
     {
@@ -33,7 +35,12 @@
       "logo": "/lawyer.jpg",
       "start": "Sep 2017",
       "end": "June 2021",
-      "description": ["GPDR"]
+      "description": [
+        "Consulting companies on data protection,",
+        "Following up on lawsuits and other legal proceedings arising from the Personal Data Protection Act",
+        "Following up on mediations and negotiations arising from this Act",
+        "Informing clients about the process"
+      ]
     },
     {
       "name": "Bonilabs Technology, Istanbul, Turkey",
@@ -42,7 +49,13 @@
       "logo": "/bonilabs.jpg",
       "start": "Sep 2014",
       "end": "June 2017",
-      "description": ["Frontend Development", "Design Principles"]
+      "description": [
+        "Updating PHP-based sites belonging to customers",
+        "Production of Wordpress themes",
+        "Production of customized add-ons and",
+        "Integration of Payment Panels into websites,",
+        "working as a team on these topics."
+      ]
     },
     {
       "name": "Kara Agency, Istanbul, Turkey (Closed)",
@@ -51,7 +64,11 @@
       "logo": "/karaajans.jpg",
       "start": "July 2012",
       "end": "July 2014",
-      "description": ["System Administration", "Network Administration"]
+      "description": [
+        "Install, configure and maintain servers for customers from scratch",
+        "Install and configure network configurations from scratch and",
+        "Fulfill customer requests as part of system administration."
+      ]
     }
   ]
 }
